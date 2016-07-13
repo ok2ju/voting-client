@@ -5,7 +5,7 @@ import Vote from './Vote';
 import Winner from './Winner';
 import * as actionCreators from '../action_creators';
 
-const Voting = React.createClass({
+export const Voting = React.createClass({
   mixins: [PureRenderMixin],
 
   render: function() {
