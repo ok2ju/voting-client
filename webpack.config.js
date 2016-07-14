@@ -7,11 +7,19 @@ module.exports = {
     './src/index.jsx'
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      }
+    ],
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot!babel'
-    }, {
+    },
+    {
       test: /\.css$/,
       loader: 'style!css!autoprefixer?browsers=last 2 versions'
     }]
@@ -27,6 +35,9 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true
+  },
+  eslint: {
+    configFile: './.eslintrc'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

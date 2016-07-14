@@ -9,9 +9,8 @@ function vote(state, entry) {
 
   if (currentPair && currentPair.includes(entry)) {
     return state.set('hasVoted', entry);
-  } else {
-    return state;
   }
+  return state;
 }
 
 function resetVote(state) {
@@ -20,18 +19,18 @@ function resetVote(state) {
 
   if (hasVoted && !currentPair.includes(hasVoted)) {
     return state.remove('hasVoted');
-  } else {
-    return state;
   }
+
+  return state;
 }
 
-export default function(state = Map(), action) {
+export default function (state = Map(), action) {
   switch (action.type) {
     case 'SET_STATE':
       return resetVote(setState(state, action.state));
     case 'VOTE':
       return vote(state, action.entry);
+    default:
+      return state;
   }
-
-  return state;
 }
