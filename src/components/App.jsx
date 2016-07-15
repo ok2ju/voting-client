@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default React.createClass({
-  render: function() {
+  propTypes: {
+    children: PropTypes.node,
+  },
+
+  render() {
     return this.props.children;
-  }
+  },
 });
